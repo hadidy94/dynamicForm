@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import "primeicons/primeicons.css";
+body{
+  background: #F1F4F6;
+}
+
+
+.btn-primary
+{
+  --bs-btn-bg : #004D71 !important;
+}
+
+.btn-gray {
+  background: #DFE9EE;
+  margin-inline-end: 5px;
+  &:hover {
+    background: #004D71;
+    color: #fff;
+  }
+}
+
+
+.accordion-button::after {
+  background-color: #DFE9EE;
+  padding: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  background-position: center;
+  border-radius: 4px;
+}
