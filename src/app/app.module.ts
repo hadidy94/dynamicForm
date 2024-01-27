@@ -10,6 +10,11 @@ import { TemplatesComponent } from './components/templates/templates.component';
 import { AccordionModule } from 'primeng/accordion';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputSwitchModule } from 'primeng/inputswitch';
+
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -29,7 +34,10 @@ import { DropdownModule } from 'primeng/dropdown';
     AccordionModule,
     DialogModule,
     DropdownModule,
-    NgbAccordionModule
+    NgbAccordionModule,
+    InputTextModule,
+    InputSwitchModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

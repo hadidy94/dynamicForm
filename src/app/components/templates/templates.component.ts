@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-templates',
@@ -7,9 +8,25 @@ import { Component, Input } from '@angular/core';
 })
 export class TemplatesComponent {
   @Input() pageStructure: any;
+  @Output() addTemplate = new EventEmitter();
   visible: boolean = false;
   mainSections: any[] = [];
   subSections: any[] = [];
+
+  fieldForm: FormGroup = new FormGroup({});
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.fieldForm = this.fb.group({
+      mainSection: [null, Validators.required],
+      subSection: [null, Validators.required],
+      fieldName: [null, Validators.required],
+      fieldControl: [null, Validators.required],
+      isRequired: [null, Validators.required],
+      errorMsg: [null, Validators.required],
+    });
+  }
 
 
   addField() {
@@ -39,5 +56,16 @@ export class TemplatesComponent {
     });
 
     this.subSections = subSectionarr;
+  }
+
+  submitField(){
+    console.log(this.fieldForm.value);
+    this.addTemplate.emit(this.fieldForm.value);
+    this.closeBtn();
+  }
+
+  closeBtn(){
+    this.visible = false;
+    this.fieldForm.reset();
   }
 }

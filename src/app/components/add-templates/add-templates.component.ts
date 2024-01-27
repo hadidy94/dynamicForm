@@ -72,4 +72,24 @@ export class AddTemplatesComponent {
   exportPageStructure() {
     console.log(this.pageStructure);
   }
+
+  addField(event: any){
+    console.log(event);
+    const selectedMainSection: any = this.pageStructure.mainSections.find(
+      (section: any) => section.id === event.mainSection
+    )
+    const selectedSubSection: any = selectedMainSection.subSections.find(
+      (subSection: any) => subSection.id === event.subSection
+    )
+    selectedSubSection.fields.push({
+      id: uuid4(),
+      label: event.fieldName,
+      name: event.fieldControl,
+      type:'string',
+      isRequired: event.isRequired,
+      errorMsg: event.errorMsg
+    })
+    console.log(this.pageStructure);
+
+  }
 }
