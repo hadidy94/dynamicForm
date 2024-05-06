@@ -1,47 +1,163 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <h1>النماذج</h1>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/add-template" routerLinkActive="active">النماذج</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
+<router-outlet></router-outlet>
 
-      </ul>
 
+<div class="container">
+  <button type="button" class="btn btn-primary" (click)="generatePDF()">Generate PDF</button>
+  <div *ngIf="showContentForPdf" #header>
+    <div class="qr-code d-flex align-items-center justify-content-between">
+      <img src="assets/logo/logo.png" alt="icon" width="250" />
+    </div>
+    <div class="text-center mb-5">
+      <h1 class="fw-bold">رخصة التجارة بالمنتجات البترولية</h1>
+      <h1 class="fw-bold">Petroleum Trading License</h1>
     </div>
   </div>
-</nav>
 
-
-<ng-template #demoModal let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-      (click)="modal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <label for="dateOfBirth">Date of birth</label>
-        <div class="input-group">
-          <input id="dateOfBirth" name="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker
-            #dp="ngbDatepicker">
-          <button type="button" class="btn btn-outline-secondary bi bi-calendar" (click)="dp.toggle()"></button>
+  <div  class="my-5" #pdfContent>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="licenses-card">
+          <div class="licenses-card-header">
+            <h4>رقم الرخصة</h4>
+            <h4>License Number</h4>
+          </div>
+          <div class="licenses-card-body">
+            <p>1249323522124</p>
+          </div>
         </div>
       </div>
-    </form>
+
+      <div class="col-md-4">
+        <div class="licenses-card">
+          <div class="licenses-card-header">
+            <h4>تاريخ الإصدار</h4>
+            <h4>Release Date</h4>
+          </div>
+          <div class="licenses-card-body">
+            <p>2022/10/24</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="licenses-card">
+          <div class="licenses-card-header">
+            <h4>تاريخ الإنتهاء</h4>
+            <h4>Expiry Date</h4>
+          </div>
+          <div class="licenses-card-body">
+            <p>2022/10/24</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="licenses-card">
+          <div class="licenses-card-header">
+            <h4>اسم المنشأة</h4>
+            <h4>Facility Name</h4>
+          </div>
+          <div class="licenses-card-body">
+            <p>مصنع اساس التقنية الحديثة للصناعة</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="licenses-card">
+          <div class="licenses-card-header">
+            <h4>عنوان المنشأة</h4>
+            <h4>Facility Address</h4>
+          </div>
+          <div class="licenses-card-body">
+            <p>النخيل،الرياض، المملكة العربية السعودية</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="licenses-card">
+          <div class="licenses-card-header">
+            <h4>القطاع</h4>
+            <h4>Sector</h4>
+          </div>
+          <div class="licenses-card-body">
+            <p>قطاع بيع وشراء المنتجات البترولية وغاز البترولية السائل </p>
+            <p> Sector of buying and selling petroleum products and liquid petroleum gas</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="licenses-card">
+          <div class="licenses-card-header">
+            <h4>النشاط</h4>
+            <h4>Activity</h4>
+          </div>
+          <div class="licenses-card-body">
+            <p>بيع اسطوانات غاز البترول السائل بالتجزئة للمستهلك في محلات البيع </p>
+            <p>Retail sale of liquid petroleum gas cylinders to the consumer in retail stores</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="products-table">
+      <table class="table table-bordered border-primary">
+        <thead>
+          <tr>
+            <th scope="col" style="min-width: 180px">
+              <div>
+                <span>البند الجمركي</span>
+                <span>HS Code</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div>
+                <span>المنتج</span>
+                <span>Product</span>
+              </div>
+            </th>
+            <th scope="col" style="min-width: 160px">
+              <div>
+                <span>النوع </span>
+                <span>Type</span>
+              </div>
+            </th>
+            <th scope="col" style="min-width: 140px">
+              <div>
+                <span>الكمية</span>
+                <span>Quantity</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let item of arr">
+            <td scope="row">
+              <span class="text-center d-block">123456789012</span>
+            </td>
+            <td>
+              <span class="d-block mb-1">ناقثا خفيفة </span>
+              <span>Aromatic solvents including benzene compounds, toluene, xylene, and their mixtures (BTX)</span>
+            </td>
+            <td>
+              <span class="d-block mb-1">منتجات بترولية نهائية او شبه نهائية </span>
+              <span class="d-block">finished Final or semi- finished Final Petroleum Products</span>
+            </td>
+            <td>
+              <span class="d-block text-center">٩٩٩٩٩٩ طن/Ton</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+
+  <div *ngIf="showContentForPdf" #footer>
+    <p class="text-center mt-4">
+      It is a long established fact that a reader will be distracted by the readable content of a page
+    </p>
   </div>
-</ng-template><router-outlet></router-outlet>
+
+</div>

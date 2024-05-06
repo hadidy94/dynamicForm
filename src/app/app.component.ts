@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { PdfService } from './pdf.service';
 
 
 
@@ -10,9 +10,34 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AppComponent {
   title = 'dynamicForm';
-  constructor(private modalService: NgbModal) {}
 
-  public open(modal: any): void {
-    this.modalService.open(modal);
+  arr = Array.from({length: 5}, (_, i) => i + 1);
+  showContentForPdf: boolean = true;
+
+  constructor(private pdfService: PdfService) {}
+
+  @ViewChild('pdfContent')
+  pdfContent!: ElementRef;
+
+  @ViewChild('header')
+  header!: ElementRef;
+  @ViewChild('footer')
+  footer!: ElementRef;
+
+
+  generatePDF() {
+    this.showContentForPdf = true;
+
+    setTimeout(() => {
+      const content = this.pdfContent.nativeElement;
+      this.pdfService.generatePdf2(
+        content,
+        this.header.nativeElement,
+        this.footer.nativeElement,
+        'license'
+      );
+    }, 200);
   }
+
+
 }

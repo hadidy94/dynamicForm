@@ -4,9 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule , NgbAccordionModule} from '@ng-bootstrap/ng-bootstrap';
-import { AddTemplatesComponent } from './components/add-templates/add-templates.component';
-import { TemplatesComponent } from './components/templates/templates.component';
+// import { NgbModule , NgbAccordionModule} from '@ng-bootstrap/ng-bootstrap';
 import { AccordionModule } from 'primeng/accordion';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
@@ -23,18 +21,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    AddTemplatesComponent,
-    TemplatesComponent
+    // AddTemplatesComponent,
+    // TemplatesComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NgbModule,
     AccordionModule,
     DialogModule,
     DropdownModule,
-    NgbAccordionModule,
     InputTextModule,
     InputSwitchModule,
     ReactiveFormsModule
